@@ -1,0 +1,59 @@
+@import url("https://use.typekit.net/fjg0ajy.css"); /*From adobe fonts  */
+
+#root {
+  --blue: #23E2DD;
+  --pink: #FFA1FF;
+  margin: 0 auto;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
+
+nav{
+  display: flex;
+  width: 100;
+  overflow: hidden;
+}
+
+main{
+  margin: 3rem;
+}
+
+svg{
+  height: 100%;
+}
+
+h1{
+  font-family: sofia-pro, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+h2{
+  font-family: sofia-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+p{
+  font-family: sofia-pro, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a{
+  font-family: sofia-pro, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+
+}
+
+.pagePlaceHolder{
+  width: 50rem;
+}
+
