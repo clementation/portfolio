@@ -1,13 +1,13 @@
-.cls-1, .cls-2 {
+/* .cls-1, .cls-2 {
   stroke-width: 0px;
 }
   
 .cls-2 {
   fill: #fff;
-}
+} */
 
 .navCluster{
-  margin-right: -0.6rem;
+  margin-left: -0.6rem;
   position: relative;
   height: 7em;
 }

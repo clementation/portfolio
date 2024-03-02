@@ -28,10 +28,12 @@ export function Root({ children }) {
         <>
             <nav>
                 <Logo />
-                <NavCluster to={"/"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >PORTFOLIO</NavCluster>
-                <NavCluster to={"/about"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >ABOUT</NavCluster>
-                <NavCluster to={"/contact"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >CONTACT</NavCluster>
-                <Cluster />
+                <div className="navPuzzle">
+                    <NavCluster to={"/"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >PORTFOLIO</NavCluster>
+                    <NavCluster to={"/about"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >ABOUT</NavCluster>
+                    <NavCluster to={"/contact"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >CONTACT</NavCluster>
+                    <Cluster />
+                </div>
             </nav>
             <main>
                 <Outlet />
