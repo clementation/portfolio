@@ -9,7 +9,7 @@
 .navCluster{
   margin-right: -0.6rem;
   position: relative;
-  height: 8rem;
+  height: 7em;
 }
 
 .cluster{
@@ -37,7 +37,7 @@
   height: inherit;
   z-index: 0;
   display: grid;
-  grid-template-rows: 1.1fr 1.1fr 1.2fr;
+  grid-template-rows: 1.05fr 1.1fr 1.2fr;
 }
 
 .placeHolder{
@@ -52,7 +52,7 @@
   font-family: sofia-pro, sans-serif;
   font-weight: 900;
   font-style: normal;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .NavPieceSubTitle{
@@ -60,7 +60,7 @@
   align-items: center;
   justify-content: center;
   font-family: sofia-pro, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   font-size: 1.1em;
   color: var(--blue)

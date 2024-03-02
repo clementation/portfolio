@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 import '../styles/Clusters.css'
 
-const width = 15 //3, 7, 11, 15, 19, 23, 27...
+const width = 19 //3, 7, 11, 15, 19, 23, 27...
 const seperation = 1
 const duration = 0.5
 const scale = 1.3

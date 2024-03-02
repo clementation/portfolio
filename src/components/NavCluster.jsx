@@ -7,7 +7,7 @@ import '../styles/Clusters.css'
 const width = 3 //3, 7, 11, 15, 19, 23, 27...
 const seperation = 1
 const duration = 0.4
-const scale = 1.3
+const scale = 1.2
 
 const c_shift = (scale - 1) * 57.2
 const viewWidthMin = 100 + ((width - 1) * 57.2)

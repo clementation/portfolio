@@ -6,9 +6,9 @@
   margin: 0 auto;
 }
 
-*{
+/* *{
   box-sizing: border-box;
-}
+} */
 
 body{
   margin: 0;
@@ -26,6 +26,10 @@ main{
 
 svg{
   height: 100%;
+}
+
+img{
+  width: 100%
 }
 
 h1{

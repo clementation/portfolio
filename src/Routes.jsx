@@ -14,6 +14,7 @@ import {
 import NavCluster from './components/NavCluster'
 import Cluster from './components/Cluster'
 import Logo from './components/Logo'
+import Gallery from './components/Gallery'
 
 export function Root({ children }) {
     const location = useLocation()
@@ -42,12 +43,15 @@ export function Root({ children }) {
 export function Portfolio({ children }) {
 
     return (
-        <div className="pagePlaceHolder">
-            <h1>HELLO WORLD!</h1>
-            <h2>This is my Portfolio page</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos omnis eum nesciunt tempora facilis neque molestiae fugiat incidunt aperiam nemo inventore expedita esse eveniet atque fuga, deleniti, est sequi laboriosam expedita esse.</p>
-            <main>{children || <Outlet />}</main>
-        </div>
+        <>
+            <div className="pagePlaceHolder">
+                <h1>HELLO WORLD!</h1>
+                {/* <h2>This is my Portfolio page</h2> */}
+                {/* <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos omnis eum nesciunt tempora facilis neque molestiae fugiat incidunt aperiam nemo inventore expedita esse eveniet atque fuga, deleniti, est sequi laboriosam expedita esse.</p>
+                <main>{children || <Outlet />}</main> */}
+            </div>
+            <Gallery />
+        </>
     )
 }
 
