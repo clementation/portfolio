@@ -6,7 +6,7 @@ import '../styles/Clusters.css'
 
 const width = 3 //3, 7, 11, 15, 19, 23, 27...
 const seperation = 1
-const duration = 0.4
+const duration = 0.35
 const scale = 1.2
 
 const c_shift = (scale - 1) * 57.2
@@ -27,6 +27,7 @@ function Square ({ xPos, isSelected }) {
             duration: duration,
             ease: "easeInOut"
         }}
+        initial={false}
         d="M4.82.11h57.2v57.2H4.82z" 
         />
     )
@@ -41,12 +42,22 @@ function ShiftingC ({ xPos, isSelected }){
             duration: duration,
             ease: "easeInOut"
         }}
+        initial={false}
         d="M81.63 17.33c6.92 0 12.92 2.54 17.23 6.71 1.84 1.69 1.34 5.29-.64 7.06-1.98 1.69-4.87 1.62-6.64.07-2.54-2.4-6-3.81-9.95-3.81-8.05 0-14.12 6.64-14.12 14.9s6.07 14.9 14.12 14.9c3.95 0 7.41-1.41 9.95-3.81 1.77-1.55 4.66-1.62 6.64.07 1.98 1.77 2.47 5.37.64 7.06-4.31 4.16-10.31 6.71-17.23 6.71-13.91 0-24.43-11.08-24.43-24.92s10.52-24.92 24.43-24.92Z"
         />
     )
 }
   
 function Row ({ isTopRow, isSelected, isHovered }){
+
+    const [initialRender, setInitialRender] = useState(true);
+
+    // After initial render, set initialRender to false
+    if (initialRender) {
+        setTimeout(() => {
+            setInitialRender(false);
+        }, 1300);
+    }
 
     return(
         <motion.g
@@ -55,15 +66,20 @@ function Row ({ isTopRow, isSelected, isHovered }){
                 translateX: isTopRow ? 0 : 33.2,
                 translateY: isTopRow ? 0 : 57
             }}
+            initial={{
+                translateY: (isTopRow && initialRender ) ? 0 : 57,
+            }}
             animate={{
                 originX: isSelected ? (viewWidthMax / 2) / 100 : (viewWidthMin / 2) / 100, //Sets origin to center
-                translateY: (isHovered && !isTopRow) || (isSelected && !isTopRow) ? 57.2 + (57.2 * seperation) : isTopRow ? 0 : 57
+                translateY: (isHovered && !isTopRow) || (isSelected && !isTopRow) ? 57.2 + (57.2 * seperation) : isTopRow ? 0 : 57,
+                transition: {
+                    delay: initialRender ? 1.3 : 0,
+                    duration: duration,
+                    ease: "easeInOut"
+                    
+                },
             }}
-            transition={{
-                duration: duration,
-                ease: "easeInOut"
-            }}
-            >
+        >
             {/* thank you Rob Hess */}
             {Array.from(Array(width)).map((_, xPos) => <Square key={xPos} xPos = {xPos} isSelected={isSelected} />)}
 
@@ -104,13 +120,14 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
   
     return(
         <NavLink to={to}>
-            <div className="navCluster">
+            <div className="navClusterWrapper">
                 <motion.div
-                    className="puzzleWrapper"
+                    className="navCluster"
                     layout
                     onClick={handleClick}
                     onMouseEnter={handleMouseEvter}
                     onMouseLeave={hanleMouseLeave}
+                    initial={false}
                 >
                     <motion.svg //New View Box
                         xmlns="http://www.w3.org/2000/svg"
@@ -120,6 +137,7 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
                             duration: duration,
                             ease: "easeInOut"
                         }}
+                        initial={false}
                     >
 
                         <Row isTopRow={false} isSelected={isSelected} isHovered={isHovered}/>
@@ -129,10 +147,15 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
                 </motion.div>
                 <div className="NavPieceInfo">
                     <div className='placeHolder'></div>
-                    <div className="NavPieceTitle">
+                    <motion.div
+                        layout 
+                        className= "NavPieceTitle"
+                        animate={{ fontWeight: isSelected ? 900 : 500 }}
+                        transition={{ duration: 0.2 }}
+                    >
                         {children}
-                    </div>
-                    <div className="NavPieceSubTitle">
+                    </motion.div>
+                    <div className="NavPieceSubTitle" >
                         {children}
                     </div>
                 </div>

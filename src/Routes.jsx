@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-
 import {
     Link,
     NavLink,
@@ -11,30 +9,14 @@ import {
     useRouteError
 } from 'react-router-dom'
 
-import NavCluster from './components/NavCluster'
-import Cluster from './components/Cluster'
-import Logo from './components/Logo'
+import DesktopNavbar from './components/DesktopNavbar'
 import Gallery from './components/Gallery'
 
 export function Root({ children }) {
-    const location = useLocation()
-    const [selectedPath, setSelectedPath] = useState(location.pathname)
-
-    useEffect(() => {
-        setSelectedPath(location.pathname)
-    },[location])
 
     return (
         <>
-            <nav>
-                <Logo />
-                <div className="navPuzzle">
-                    <NavCluster to={"/"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >PORTFOLIO</NavCluster>
-                    <NavCluster to={"/about"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >ABOUT</NavCluster>
-                    <NavCluster to={"/contact"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >CONTACT</NavCluster>
-                    <Cluster />
-                </div>
-            </nav>
+            <DesktopNavbar />
             <main>
                 <Outlet />
             </main>

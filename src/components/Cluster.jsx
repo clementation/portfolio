@@ -78,7 +78,7 @@ export default function Cluster () {
     const width = windowDimensions.width
 
     switch(true){
-        case width > 1800:
+        case width > 1600:
             gridWidth = 15
             break
         case width > 1400:
@@ -98,9 +98,9 @@ export default function Cluster () {
     let viewWidth = 100 + ((gridWidth - 1) * 57.2)
   
     return(
-        <div className="navCluster">
+        <div className="navClusterWrapper">
             <motion.div
-                className="puzzleWrapper"
+                className="navCluster"
                 layout
             >
                 <motion.svg //New View Box

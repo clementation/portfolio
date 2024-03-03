@@ -12,6 +12,7 @@
 }
 
 .logoName{
+    width: 6rem;
     display: flex;
     align-items: end;
     font-size: 1.2em;
