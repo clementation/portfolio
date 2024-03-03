@@ -23,7 +23,7 @@ nav{
 }
 
 main{
-  margin: 3rem;
+  margin-top: 2rem
 }
 
 svg{
@@ -65,5 +65,11 @@ a{
 
 .pagePlaceHolder{
   width: 50rem;
+}
+
+@media (min-Width: 600px) {
+  main{
+    margin: 5rem 3rem 0;
+  }
 }
 
