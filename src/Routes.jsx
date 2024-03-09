@@ -38,6 +38,16 @@ export function About(props) {
             <h1>HEY WORLD!</h1>
             <h2>This is my About page</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
+            <h1>HEY WORLD!</h1>
+            <h2>This is my About page</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
+            <h1>HEY WORLD!</h1>
+            <h2>This is my About page</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
+            <h1>HEY WORLD!</h1>
+            <h2>This is my About page</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
+       
         </div>
     
     )
@@ -50,6 +60,16 @@ export function Contact(props) {
             <h1>SUP WORLD!</h1>
             <h2>This is my Contact page</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
+            <h1>SUP WORLD!</h1>
+            <h2>This is my Contact page</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
+            <h1>SUP WORLD!</h1>
+            <h2>This is my Contact page</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
+            <h1>SUP WORLD!</h1>
+            <h2>This is my Contact page</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
+       
         </div>
     )
 }

@@ -13,17 +13,19 @@
 body{
   margin: 0;
   width: 100%;
+  background-color: white;
 }
 
 nav{
+  top: 0;
+  position: fixed;
   display: flex;
   width: 100%;
   justify-content: space-between;
-  overflow: hidden;
 }
 
 main{
-  margin-top: 2rem
+  margin: 8rem 0.5rem 2rem;
 }
 
 svg{
@@ -56,20 +58,19 @@ a{
   font-family: sofia-pro, sans-serif;
   font-weight: 500;
   font-style: normal;
-
+  text-decoration: none;
 }
-
-.navPuzzle{
-  display: flex;
-} 
 
 .pagePlaceHolder{
-  width: 50rem;
+  width: 100%
 }
 
-@media (min-Width: 600px) {
+@media (min-Width: 768px) {
   main{
-    margin: 5rem 3rem 0;
+    margin-top: 11rem;
+    margin-bottom: 4rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 }
 

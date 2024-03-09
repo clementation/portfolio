@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { motion } from "framer-motion"
 import { NavLink } from 'react-router-dom'
 
-import '../styles/Clusters.css'
+import '../styles/NavElements.css'
 
 const width = 3 //3, 7, 11, 15, 19, 23, 27...
 const seperation = 1
 const duration = 0.35
-const scale = 1.2
+const scale = 1.35
 
 const c_shift = (scale - 1) * 57.2
 const viewWidthMin = 100 + ((width - 1) * 57.2)
@@ -48,35 +48,18 @@ function ShiftingC ({ xPos, isSelected }){
     )
 }
   
-function Row ({ isTopRow, isSelected, isHovered }){
-
-    const [initialRender, setInitialRender] = useState(true);
-
-    // After initial render, set initialRender to false
-    if (initialRender) {
-        setTimeout(() => {
-            setInitialRender(false);
-        }, 1300);
-    }
+function Row ({ isMirrored, isSelected, isHovered }){
 
     return(
         <motion.g
             style={{
-                scaleX: isTopRow ? -1 : 1,
-                translateX: isTopRow ? 0 : 33.2,
-                translateY: isTopRow ? 0 : 57
-            }}
-            initial={{
-                translateY: (isTopRow && initialRender ) ? 0 : 57,
+                scaleX: isMirrored? -1 : 1,
             }}
             animate={{
                 originX: isSelected ? (viewWidthMax / 2) / 100 : (viewWidthMin / 2) / 100, //Sets origin to center
-                translateY: (isHovered && !isTopRow) || (isSelected && !isTopRow) ? 57.2 + (57.2 * seperation) : isTopRow ? 0 : 57,
                 transition: {
-                    delay: initialRender ? 1.3 : 0,
                     duration: duration,
                     ease: "easeInOut"
-                    
                 },
             }}
         >
@@ -100,6 +83,15 @@ function Row ({ isTopRow, isSelected, isHovered }){
 export default function NavCluster ({ to, selectedPath, setSelectedPath, children }) {
 
     const [ isHovered, setIsHovered ] = useState(false)
+
+    const [initialRender, setInitialRender] = useState(true);
+
+    // After initial render, set initialRender to false
+    if (initialRender) {
+        setTimeout(() => {
+            setInitialRender(false);
+        }, 1400);
+    }
   
     function checkPath(to, selectedPath){
         return to === selectedPath
@@ -120,7 +112,7 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
   
     return(
         <NavLink to={to}>
-            <div className="navClusterWrapper">
+            <div className="navElementWrapper">
                 <motion.div
                     className="navCluster"
                     layout
@@ -132,7 +124,7 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
                     <motion.svg //New View Box
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 100 67.17"
-                        animate={{viewBox: isSelected ? `0 0 ${ viewWidthMax + 33.2 } ${67.17 + (57.2 * 2)}` : `0 0 ${ viewWidthMin + 33.2 } ${67.17 + (57.2 * 2)}`}}
+                        animate={{viewBox: isSelected ? `0 0 ${ viewWidthMax + 33.2 } ${67.17}` : `0 0 ${ viewWidthMin + 33.2 } ${67.17}`}}
                         transition={{
                             duration: duration,
                             ease: "easeInOut"
@@ -140,25 +132,37 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
                         initial={false}
                     >
 
-                        <Row isTopRow={false} isSelected={isSelected} isHovered={isHovered}/>
-                        <Row isTopRow={true} isSelected={isSelected} isHovered={isHovered}/>
+                        <Row isMirrored={true} isSelected={isSelected} isHovered={isHovered}/>
 
                     </motion.svg>
                 </motion.div>
-                <div className="NavPieceInfo">
-                    <div className='placeHolder'></div>
+                <motion.div 
+                    layout
+                    className="NavElementInfo"
+                    style={{
+                        alignItems: initialRender ? "center" : (isSelected || isHovered ) ? "flex-end" : "flex-start"
+                    }}
+                    transition={{
+                        ease: "easeInOut",
+                        duration: duration
+                    }}
+                >
                     <motion.div
                         layout 
                         className= "NavPieceTitle"
-                        animate={{ fontWeight: isSelected ? 900 : 500 }}
-                        transition={{ duration: 0.2 }}
+                        initial={false}
+                        animate={{
+                            fontWeight: isSelected ? 900 : 300,
+                            fontSize: isSelected ? "1.2rem" : "0.8rem"
+                        }}
+                        transition={{
+                            ease: "easeInOut",
+                            duration: duration
+                        }}
                     >
                         {children}
                     </motion.div>
-                    <div className="NavPieceSubTitle" >
-                        {children}
-                    </div>
-                </div>
+                </motion.div>
             </div>
         </NavLink>
     )

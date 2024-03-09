@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive'
 
 import Logo from './Logo'
-import DesktopNavbar from './DesktopNavbar'
-import MobileNavbar from './MobileNavbar'
+import DesktopNav from './DesktopNav'
+import MobileNav from './MobileNav'
 
 export default function Navbar() {
     const isTablet  = useMediaQuery({ maxWidth: 768 })
@@ -10,7 +10,7 @@ export default function Navbar() {
     return(
         <nav>
             <Logo />
-            { isTablet ? <MobileNavbar /> : <DesktopNavbar />}
+            { isTablet ? <MobileNav /> : <DesktopNav />}
         </nav>
 
     )
