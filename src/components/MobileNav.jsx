@@ -5,16 +5,27 @@ import { motion, AnimatePresence } from "framer-motion"
 import NavToggle from "./NavToggle"
 
 const navLinks = [
-    {title: "PORTFOLIO", to: "/"},
+    {title: "PORTFOLIO", to: "/portfolio"},
     {title: "ABOUT", to: "/about"},
     {title: "CONTACT", to: "/contact"}
 ]
 
+
 function Link({title, to, setIsOpen}) {
     const location = useLocation()
 
-    function isCurrent(location) {
-        if(location.pathname === to){
+    function extractMainPath(path){
+        const secondSlashIndex = path.indexOf('/', path.indexOf('/') + 1);
+        if (secondSlashIndex !== -1) {
+            return path.substring(0, secondSlashIndex);
+        }
+        return path;
+    }
+
+    const path = extractMainPath(location.pathname)
+
+    function isCurrent(path) {
+        if(path === to){
             return true
         }else{
             return false
@@ -31,7 +42,7 @@ function Link({title, to, setIsOpen}) {
         },
         animate: {
             x: 0,
-            fontWeight: isCurrent(location) ? 600 : 300,
+            fontWeight: isCurrent(path) ? 600 : 300,
             transition: {
                 delay: 0.1,
                 duration: 0.8,

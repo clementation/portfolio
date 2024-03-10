@@ -12,4 +12,4 @@
         grid-template-columns: 
             repeat(auto-fit, minmax(25rem, 1fr));
     }
-  }
+}

@@ -1,5 +1,5 @@
 // import React from 'react'
-import { createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, useLocation, Navigate} from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 
@@ -10,6 +10,7 @@ const queryClient = new QueryClient()
 import {
   Root,
   Portfolio,
+  Project,
   About,
   Contact,
   ErrorPage
@@ -21,9 +22,16 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Root ><ErrorPage /></Root>,
     children: [
-        { index: true, element: <Portfolio /> },
-        { path: "/About", element: <About /> },
-        { path: "/Contact", element: <Contact /> }
+      {index: true, element: <Navigate to="/portfolio" />},
+      { 
+        path: "/portfolio", 
+        element: <Portfolio />,
+        children: [
+          {path: ":project", element: <Project />}
+        ]
+      },
+      { path: "/About", element: <About /> },
+      { path: "/Contact", element: <Contact /> }
     ]
   }
 ])

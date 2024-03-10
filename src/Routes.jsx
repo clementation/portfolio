@@ -6,7 +6,8 @@ import {
     useParams,
     useSearchParams,
     useLocation,
-    useRouteError
+    useRouteError,
+    useOutletContext
 } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
@@ -28,6 +29,16 @@ export function Portfolio({ children }) {
 
     return (
         <Gallery />
+    )
+}
+
+export function Project(){
+    const params = useParams()
+    const data = useOutletContext()
+    console.log(params)
+
+    return(
+        <h1>{data.title}</h1>
     )
 }
 

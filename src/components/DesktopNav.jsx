@@ -6,12 +6,21 @@ import NavElement from './NavElement'
 
 export default function DesktopNav(){
     const location = useLocation()
-    const [selectedPath, setSelectedPath] = useState(location.pathname)
-    const [prevScrollPos, setPrevScrollPos] = useState(0);
-    const [visible, setVisible] = useState(true);
+
+    function extractMainPath(path){
+        const secondSlashIndex = path.indexOf('/', path.indexOf('/') + 1);
+        if (secondSlashIndex !== -1) {
+            return path.substring(0, secondSlashIndex);
+        }
+        return path;
+    }
+
+    const path = extractMainPath(location.pathname)
+
+    const [selectedPath, setSelectedPath] = useState(path)
 
     useEffect(() => {
-        setSelectedPath(location.pathname)
+        setSelectedPath(path)
     },[location])
 
     return(
@@ -25,7 +34,7 @@ export default function DesktopNav(){
                 ease: "easeInOut"
             }}
         >
-            <NavElement to={"/"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >PORTFOLIO</NavElement>
+            <NavElement to={"/portfolio"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >PORTFOLIO</NavElement>
             <NavElement to={"/about"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >ABOUT</NavElement>
             <NavElement to={"/contact"} selectedPath={selectedPath} setSelectedPath={setSelectedPath} >CONTACT</NavElement>
         </motion.div>
