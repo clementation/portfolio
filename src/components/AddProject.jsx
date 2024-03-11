@@ -11,7 +11,9 @@ import {
     addDoc
 } from 'firebase/firestore'
 
-export default function AddProject(params) {
+import "../styles/Upload.css"
+
+export default function AddProject() {
     const [ files, setFiles ] = useState(null)
     const [ title, setTitle ] = useState("")
     const [ description, setDescription] = useState("")
@@ -86,12 +88,15 @@ export default function AddProject(params) {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input type="file" onChange={e => setFiles(e.target.files)} />
-            <input type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
-            <textarea type="text" placeholder='Descrption' value={description} onChange={e => setDescription(e.target.value)} />
-            <input type="text" placeholder='Weight' value={weight} onChange={e => setWeight(e.target.value)} />
-            <button type="submit">Submit</button>
-        </form>
+        <div className="addProject">
+            <h1>Add Project</h1>
+            <form onSubmit={handleSubmit}>
+                <input type="file" onChange={e => setFiles(e.target.files)} />
+                <input type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
+                <textarea type="text" placeholder='Descrption' value={description} onChange={e => setDescription(e.target.value)} />
+                <input type="text" placeholder='Weight' value={weight} onChange={e => setWeight(e.target.value)} />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     )
 }

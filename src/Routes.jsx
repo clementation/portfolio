@@ -14,6 +14,8 @@ import Navbar from './components/Navbar'
 import Gallery from './components/Gallery'
 import AddProject from './components/AddProject'
 import Section from './components/Section'
+import AddSection from './components/AddSection'
+import ProjectList from './components/ProjectList'
 
 export function Root({ children }) {
 
@@ -37,7 +39,7 @@ export function Portfolio({ children }) {
 export function Project(){
     const params = useParams()
     const data = useOutletContext()
-    console.log(params)
+    // console.log(params)
 
     return(
         <Section />
@@ -90,7 +92,10 @@ export function Contact(props) {
 export function Upload(){
 
     return(
-        <AddProject />
+        <>
+            <AddProject />
+            <ProjectList />
+        </>
     )
 }
 

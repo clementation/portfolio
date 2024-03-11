@@ -9,14 +9,14 @@ import Frame from "./Frame";
 import '../styles/Gallery.css'
 
 export default function Gallery() {
-    
-    const querydb = "projects"
 
     const [open, setOpen] = useState(null)
 
     function toggleFrame(index){
         setOpen(open === index ? null : index)
     }
+
+    const querydb = "projects"
 
     const { isLoading, error, data } = useQuery({
         queryKey: [ querydb ],
@@ -34,7 +34,7 @@ export default function Gallery() {
         console.log(error)
     }
 
-    console.log(data)
+    // console.log(data)
 
     return(
         <div className="grid">

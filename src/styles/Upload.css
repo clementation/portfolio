@@ -1,0 +1,17 @@
+.addProject{
+    width: 20rem;
+}
+
+.addSection{
+    width: 20rem;
+}
+
+.projectList{
+    width: 30rem;
+}
+
+.projectListItem{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
