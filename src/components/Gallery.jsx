@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { useQuery } from '@tanstack/react-query'
 
 import { db } from "../config/firebase";
@@ -12,11 +12,17 @@ export default function Gallery() {
     
     const querydb = "projects"
 
+    const [open, setOpen] = useState(null)
+
+    function toggleFrame(index){
+        setOpen(open === index ? null : index)
+    }
+
     const { isLoading, error, data } = useQuery({
         queryKey: [ querydb ],
         queryFn: async () => {
             const newData = []
-            const querySnapshot = await getDocs(collection(db, querydb));
+            const querySnapshot = await getDocs(query(collection(db, querydb),orderBy("weight")));
             querySnapshot.forEach((doc) => {
                 newData.push(doc.data())
             })
@@ -28,10 +34,18 @@ export default function Gallery() {
         console.log(error)
     }
 
+    console.log(data)
+
     return(
         <div className="grid">
             {!isLoading && data.map((data, index) => (
-                <Frame projectData={data} key={index} />
+                <Frame
+                    key={index}
+                    index={index}
+                    projectData={data}
+                    isOpen={open === index}
+                    toggleFrame={toggleFrame}
+                />
             ))}
         </div>
     )

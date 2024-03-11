@@ -12,6 +12,8 @@ import {
 
 import Navbar from './components/Navbar'
 import Gallery from './components/Gallery'
+import AddProject from './components/AddProject'
+import Section from './components/Section'
 
 export function Root({ children }) {
 
@@ -38,7 +40,7 @@ export function Project(){
     console.log(params)
 
     return(
-        <h1>{data.title}</h1>
+        <Section />
     )
 }
 
@@ -82,6 +84,13 @@ export function Contact(props) {
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
        
         </div>
+    )
+}
+
+export function Upload(){
+
+    return(
+        <AddProject />
     )
 }
 

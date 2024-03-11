@@ -44,11 +44,12 @@ h1{
 
 h2{
   font-family: sofia-pro, sans-serif;
-  font-weight: 500;
-  font-style: normal;
+  font-weight: 700;
+  margin-block-end: 0;
 }
 
 p{
+  font-size: 0.85rem;
   font-family: sofia-pro, sans-serif;
   font-weight: 300;
   font-style: normal;

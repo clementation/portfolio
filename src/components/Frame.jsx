@@ -7,34 +7,29 @@ import { Link, Outlet, useNavigate} from "react-router-dom"
 import '../styles/Frame.css'
 
 
-const storage = getStorage()
+function Title({title, description}) {
+    return(
+        <div className="title">
+            <h2>{title.toUpperCase()}</h2>
+            <p>{description}</p>
+        </div>
+    )
+}
 
-export default function Frame({ projectData }) {
+export default function Frame({ projectData, isOpen, toggleFrame, index }) {
 
-    const {title, path } = projectData
+    const {title, description, path, heroUrl } = projectData
 
     const navigate = useNavigate()
 
-    const queryImage = projectData.heroImage
-
-    const [open, setOpen] = useState(false)
-
     function handleClick(){
-        setOpen(prev => !prev)
-        navigate(`/portfolio${path}`)
-    }
+        toggleFrame(index)
+        if(isOpen === false){
+            navigate(`/portfolio${path}`)
+        }else(
+            navigate("/portfolio")
+        )
 
-    const { isLoading, error, data } = useQuery({
-        queryKey: [ queryImage ],
-        queryFn: async () => {
-            const storageRef = ref(storage, queryImage);
-            const imageURL = await getDownloadURL(storageRef);
-            return imageURL
-        }
-    })
-
-    if(error){
-        console.log(error)
     }
 
     return(
@@ -43,11 +38,19 @@ export default function Frame({ projectData }) {
             layout
             onClick={handleClick}
             style={{
-                gridColumn: open ? "1 / -1" : "auto"
+                gridColumn: isOpen ? "1 / -1" : "auto",
+                paddingTop: isOpen ? "4rem" : 0,
+                paddingBottom: isOpen ? "4rem" : 0
+
             }}
         >
-            <img src={data}></img>
-            { open && <Outlet context={projectData} />}
+            <div className="heroSection">
+                <div className="heroImage">
+                    <img src={heroUrl}></img>
+                </div>
+                { isOpen && <Title title={title} description={description} /> }
+            </div>
+            { isOpen && <Outlet context={projectData} />}
         </motion.div>
     )
 }

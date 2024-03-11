@@ -13,7 +13,8 @@ import {
   Project,
   About,
   Contact,
-  ErrorPage
+  ErrorPage,
+  Upload
 } from './Routes'
 
 const router = createBrowserRouter([
@@ -30,8 +31,9 @@ const router = createBrowserRouter([
           {path: ":project", element: <Project />}
         ]
       },
-      { path: "/About", element: <About /> },
-      { path: "/Contact", element: <Contact /> }
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/upload", element: <Upload />}
     ]
   }
 ])
