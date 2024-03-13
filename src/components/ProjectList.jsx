@@ -46,7 +46,9 @@ export default function ProjectList() {
             const newData = []
             const querySnapshot = await getDocs(query(collection(db, querydb),orderBy("weight")));
             querySnapshot.forEach((doc) => {
-                newData.push(doc.data())
+                const docData = doc.data();
+                const docWithId = { id: doc.id, ...docData }; // Include document ID in the data
+                newData.push(docWithId);
             })
             return newData
         }

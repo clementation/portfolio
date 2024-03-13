@@ -11,6 +11,8 @@ import {
     addDoc
 } from 'firebase/firestore'
 
+import uploadImage from '../utility/uploadImage'
+
 import "../styles/Upload.css"
 
 export default function AddProject() {
@@ -24,27 +26,6 @@ export default function AddProject() {
     function prepareUrl(inputString) {
         // Convert capital letters to lowercase and remove spaces using regular expressions
         return inputString.replace(/[A-Z ]/g, (match) => match.toLowerCase().replace(/\s/g, ''));
-    }
-
-    //chat GPT
-    async function uploadImage(file) {
-        // Get a reference to the storage service
-        const storage = getStorage();
-        const storageRef = ref(storage, file.name); // Reference to the image file in the storage
-
-        // Upload the file
-        const uploadTask = uploadBytesResumable(storageRef, file);
-
-        // Wait for the upload to complete and return the download URL
-        try {
-            await uploadTask;
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-            console.log('File uploaded successfully. Download URL:', downloadURL);
-            return downloadURL;
-        } catch (error) {
-            console.error("Error uploading file:", error);
-            throw error; // Propagate the error
-        }
     }
 
     //chat GPT

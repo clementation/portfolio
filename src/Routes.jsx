@@ -13,7 +13,7 @@ import {
 import Navbar from './components/Navbar'
 import Gallery from './components/Gallery'
 import AddProject from './components/AddProject'
-import Section from './components/Section'
+import Sections from './components/Sections'
 import AddSection from './components/AddSection'
 import ProjectList from './components/ProjectList'
 
@@ -37,12 +37,11 @@ export function Portfolio({ children }) {
 }
 
 export function Project(){
-    const params = useParams()
-    const data = useOutletContext()
-    // console.log(params)
+    
+    const sections = useOutletContext()
 
     return(
-        <Section />
+        <Sections sections={sections} />
     )
 }
 

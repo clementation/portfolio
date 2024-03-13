@@ -1,0 +1,45 @@
+.sections{
+    width: 100%;
+    padding-bottom: 3rem;
+}
+
+.section{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionImage{
+    width: 100%;
+}
+
+.sectionInfo{
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.sectionInfo h2{
+    font-weight: 700;
+    margin-block-end: 0;
+}
+
+.sectionInfo p{
+    margin-block-start: 0;
+}
+
+@media (min-width: 1024px){
+    .section{
+        flex-direction: row;
+        gap: 1rem;
+    }
+    .sectionInfo{
+        max-width: 20rem;
+    }
+    .sectionImage{
+        flex-shrink: 1;
+    }
+}

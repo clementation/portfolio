@@ -13,7 +13,7 @@ function MyLogo() {
 
 export default function Logo() {
     return(
-        <Link to="/" className="logoWrapper">
+        <Link to="/portfolio" className="logoWrapper">
             <MyLogo />
             <h2 className="logoName">CONNOR{"\n"}KEALEY</h2>
         </Link>

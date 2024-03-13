@@ -7,14 +7,26 @@ import { db } from "../config/firebase";
 import Frame from "./Frame";
 
 import '../styles/Gallery.css'
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Gallery() {
 
-    const [open, setOpen] = useState(null)
+    const location = useLocation()
+    const navigate = useNavigate()
 
-    function toggleFrame(index){
-        setOpen(open === index ? null : index)
-    }
+    const [ open, setOpen ] = useState(null)
+      
+    const [selectedProject, setSelectedProject] = useState(location.pathname)
+
+    useEffect(() => {
+        navigate(selectedProject)
+    }, [selectedProject])
+
+    useEffect(() => {
+        if(location.pathname === '/portfolio'){
+            setSelectedProject(null)
+        }
+    }, [location])
 
     const querydb = "projects"
 
@@ -22,9 +34,11 @@ export default function Gallery() {
         queryKey: [ querydb ],
         queryFn: async () => {
             const newData = []
-            const querySnapshot = await getDocs(query(collection(db, querydb),orderBy("weight")));
+            const querySnapshot = await getDocs(query(collection(db, querydb), orderBy("weight")));
             querySnapshot.forEach((doc) => {
-                newData.push(doc.data())
+                const docData = doc.data();
+                const docWithId = { id: doc.id, ...docData }; // Include document ID in the data
+                newData.push(docWithId);
             })
             return newData
         }
@@ -34,17 +48,14 @@ export default function Gallery() {
         console.log(error)
     }
 
-    // console.log(data)
-
     return(
         <div className="grid">
-            {!isLoading && data.map((data, index) => (
+            {!isLoading && data.map((data) => (
                 <Frame
-                    key={index}
-                    index={index}
+                    key={data.id}
                     projectData={data}
-                    isOpen={open === index}
-                    toggleFrame={toggleFrame}
+                    selectedProject={selectedProject}
+                    setSelectedProject={setSelectedProject}
                 />
             ))}
         </div>

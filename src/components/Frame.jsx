@@ -1,36 +1,41 @@
-import { useState } from "react"
-import { getStorage, ref, getDownloadURL } from "firebase/storage"
-import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Link, Outlet, useNavigate} from "react-router-dom"
+import { Outlet } from "react-router-dom"
 
 import '../styles/Frame.css'
+import "../styles/Sections.css"
 
 
-function Title({title, description}) {
+function HeroInfo({title, description}) {
     return(
-        <div className="title">
+        <div className="sectionInfo">
             <h2>{title.toUpperCase()}</h2>
             <p>{description}</p>
         </div>
     )
 }
 
-export default function Frame({ projectData, isOpen, toggleFrame, index }) {
+export default function Frame({ projectData, selectedProject, setSelectedProject }) {
 
-    const {title, description, path, heroUrl } = projectData
+    const {title, description, path, heroUrl, sections } = projectData
 
-    const navigate = useNavigate()
+    function isOpenValue(selectedProject, path){
+        if(selectedProject === '/portfolio' + path){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    const[isOpen, setIsOpen] = useState(isOpenValue(selectedProject, path))
 
     function handleClick(){
-        toggleFrame(index)
-        if(isOpen === false){
-            navigate(`/portfolio${path}`)
-        }else(
-            navigate("/portfolio")
-        )
-
+        setSelectedProject('/portfolio' + path)
     }
+
+    useEffect(() => {
+        setIsOpen(isOpenValue(selectedProject, path))
+    },[selectedProject])
 
     return(
         <motion.div 
@@ -39,18 +44,18 @@ export default function Frame({ projectData, isOpen, toggleFrame, index }) {
             onClick={handleClick}
             style={{
                 gridColumn: isOpen ? "1 / -1" : "auto",
-                paddingTop: isOpen ? "4rem" : 0,
-                paddingBottom: isOpen ? "4rem" : 0
+                paddingTop: isOpen ? "0rem" : 0,
+                paddingBottom: isOpen ? "2rem" : 0
 
             }}
         >
             <div className="heroSection">
-                <div className="heroImage">
+                <div className="sectionImage">
                     <img src={heroUrl}></img>
                 </div>
-                { isOpen && <Title title={title} description={description} /> }
+                { isOpen && <HeroInfo title={title} description={description} /> }
             </div>
-            { isOpen && <Outlet context={projectData} />}
+            { isOpen && <Outlet context={sections} />}
         </motion.div>
     )
 }
