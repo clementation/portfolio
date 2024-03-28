@@ -78,6 +78,7 @@
   justify-content: center;
   height: 2.2rem;
   z-index: 1;
+  /* background-color: pink; */
 }
 
 .NavElementInfo{
@@ -109,8 +110,8 @@
 
 .NavPieceSubTitle{
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   font-family: sofia-pro, sans-serif;
   font-weight: 500;
   font-style: normal;

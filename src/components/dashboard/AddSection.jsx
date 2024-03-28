@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
-import { db } from "../config/firebase" // Import your Firestore instance
+import { db } from "../../config/firebase" // Import your Firestore instance
 
-import uploadImage from "../utility/uploadImage";
+import uploadImage from "../../utility/uploadImage";
 
-import "../styles/Upload.css"
+import "../../styles/Upload.css"
 
 export default function AddSection({project}) {
 
@@ -16,8 +16,8 @@ export default function AddSection({project}) {
     const [ files, setFiles ] = useState([])
     const [ title, setTitle ] = useState("")
     const [ description, setDescription] = useState("")
-    const [ layout, setLayout ] = useState("")
-    const [ weight, setWeight ] = useState(sections.length + 1)
+    const [ layout, setLayout ] = useState("image")
+    const [ weight, setWeight ] = useState( sections && sections.length + 1)
 
     const layoutTypes = [
         "image",
@@ -66,7 +66,6 @@ export default function AddSection({project}) {
             //Clear form fields after submission
             setTitle('')
             setDescription('')
-            setLayout('')
             setWeight('')
         } catch (error) {
             console.error('Error adding section:', error)

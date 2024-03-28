@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from "framer-motion"
 import { NavLink } from 'react-router-dom'
 
@@ -62,6 +62,7 @@ function Row ({ isMirrored, isSelected, isHovered }){
                     ease: "easeInOut"
                 },
             }}
+            initial={false}
         >
             {/* thank you Rob Hess */}
             {Array.from(Array(width)).map((_, xPos) => <Square key={xPos} xPos = {xPos} isSelected={isSelected} />)}
@@ -86,7 +87,16 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
 
     const [initialRender, setInitialRender] = useState(true);
 
-    // After initial render, set initialRender to false
+    // let justChanged = true
+
+    // // After initial render, set initialRender to false
+    // useEffect(() => {
+    //     console.log(initialRender)
+    //     if(!initialRender){
+    //         justChanged = false
+    //     }
+    // }, [selectedPath])
+
     if (initialRender) {
         setTimeout(() => {
             setInitialRender(false);
@@ -114,8 +124,8 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
         <NavLink to={to}>
             <div className="navElementWrapper">
                 <motion.div
+                    // layout
                     className="navCluster"
-                    layout
                     onClick={handleClick}
                     onMouseEnter={handleMouseEvter}
                     onMouseLeave={hanleMouseLeave}
@@ -137,7 +147,7 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
                     </motion.svg>
                 </motion.div>
                 <motion.div 
-                    layout
+                    // layout
                     className="NavElementInfo"
                     style={{
                         alignItems: initialRender ? "center" : (isSelected || isHovered ) ? "flex-end" : "flex-start"
@@ -146,9 +156,10 @@ export default function NavCluster ({ to, selectedPath, setSelectedPath, childre
                         ease: "easeInOut",
                         duration: duration
                     }}
+                    initial={false}
                 >
                     <motion.div
-                        layout 
+                        layout
                         className= "NavPieceTitle"
                         initial={false}
                         animate={{

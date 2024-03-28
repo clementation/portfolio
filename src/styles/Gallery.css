@@ -13,3 +13,19 @@
             repeat(auto-fit, minmax(25rem, 1fr));
     }
 }
+
+@media (min-Width: 1880px) {
+    .grid{
+        display: grid;
+        grid-template-columns: 
+            repeat(auto-fit, minmax(31rem, 1fr));
+    }
+}
+
+@media (min-Width: 1440px) {
+    .grid{
+        display: grid;
+        grid-template-columns: 
+            repeat(auto-fit, minmax(28rem, 1fr));
+    }
+}

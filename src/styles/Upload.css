@@ -7,10 +7,37 @@
 }
 
 .projectList{
-    width: 30rem;
 }
 
 .projectListItem{
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.projectListItem h3{
+    margin-block-start: 0;
+    width: 15rem
+}
+
+.projectListImage{
+    height: 80%;
+}
+
+.projectListImage img{
+    width: auto;
+    height: 100%;
+}
+
+.projectList ul{
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+.projectSection{
+    height: 10rem;
+    margin-left: 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;

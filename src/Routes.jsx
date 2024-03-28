@@ -12,10 +12,13 @@ import {
 
 import Navbar from './components/Navbar'
 import Gallery from './components/Gallery'
-import AddProject from './components/AddProject'
 import Sections from './components/Sections'
-import AddSection from './components/AddSection'
-import ProjectList from './components/ProjectList'
+import Footer from './components/Footer'
+
+//dashboard
+import ProjectList from './components/dashboard/ProjectList'
+
+import takeaway from './images/takeaway.png'
 
 export function Root({ children }) {
 
@@ -25,6 +28,7 @@ export function Root({ children }) {
             <main>
                 <Outlet />
             </main>
+            {/* <Footer /> */}
         </>
     )
 }
@@ -48,42 +52,41 @@ export function Project(){
 export function About(props) {
 
     return(
-        <div className="pagePlaceHolder">
-            <h1>HEY WORLD!</h1>
-            <h2>This is my About page</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
-            <h1>HEY WORLD!</h1>
-            <h2>This is my About page</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
-            <h1>HEY WORLD!</h1>
-            <h2>This is my About page</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
-            <h1>HEY WORLD!</h1>
-            <h2>This is my About page</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet beatae, ullam soluta perferendis consequatur inventore libero non mollitia? Officia fugiat pariatur vel quibusdam eaque nihil aperiam ab ad nobis autem?</p>
-       
+        <div className="aboutTemp">
+            <h1>Hello!</h1>
+            <p>My name is Connor! I'm a graphic designerer with a minor in computer science studying at Oregon State University.</p>
         </div>
-    
+
     )
 }
+
+const ButtonMailto = ({ mailto, label }) => {
+    return (
+        <Link
+            to='#'
+            onClick={(e) => {
+                window.location.href = mailto;
+                e.preventDefault();
+            }}
+        >
+            <h1>{label}</h1>
+        </Link>
+    );
+};
+
+// export default ButtonMailto;
 
 export function Contact(props) {
 
     return(
-        <div className="pagePlaceHolder">
-            <h1>SUP WORLD!</h1>
-            <h2>This is my Contact page</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
-            <h1>SUP WORLD!</h1>
-            <h2>This is my Contact page</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
-            <h1>SUP WORLD!</h1>
-            <h2>This is my Contact page</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
-            <h1>SUP WORLD!</h1>
-            <h2>This is my Contact page</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus commodi beatae ratione quasi sequi excepturi atque, asperiores, expedita provident quam reiciendis, placeat ipsum mollitia in eligendi quas voluptatem qui!</p>
-       
+        <div className="contact">
+            <div className="contactInfo">
+                <ButtonMailto label="CREATIONS@CONNORKEALEY.DESIGN" mailto="mailto:creations@connorkealey.design" />
+                <h2>971-238-6140</h2>
+            </div>
+            <div className="contactImage">
+                <img src={takeaway} alt="my takeaway" />
+            </div>
         </div>
     )
 }
@@ -92,7 +95,15 @@ export function Upload(){
 
     return(
         <>
-            <AddProject />
+            <h1>To Do</h1>
+            <ul>
+                <li>Add project information</li>
+                <li>Rework about page</li>
+                <li>Fix navbar jump</li>
+                <li>Improve dashboard</li>
+                <li>Add auth and dashboard access</li>
+                <li>Add paralax background</li>
+            </ul>
             <ProjectList />
         </>
     )

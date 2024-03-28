@@ -11,16 +11,15 @@ import {
     addDoc
 } from 'firebase/firestore'
 
-import uploadImage from '../utility/uploadImage'
+import uploadImage from '../../utility/uploadImage'
 
-import "../styles/Upload.css"
+import "../../styles/Upload.css"
 
-export default function AddProject() {
+export default function AddProject({projectCount, toggleVisable}) {
     const [ files, setFiles ] = useState(null)
     const [ title, setTitle ] = useState("")
     const [ description, setDescription] = useState("")
-    const [ weight, setWeight ] = useState("")
-    // const [ path, setPath ] = useState("")
+    const [ weight, setWeight ] = useState( projectCount + 1 )
 
     //chat GPT
     function prepareUrl(inputString) {
@@ -70,13 +69,14 @@ export default function AddProject() {
 
     return(
         <div className="addProject">
-            <h1>Add Project</h1>
+            <h2>Add Project</h2>
             <form onSubmit={handleSubmit}>
                 <input type="file" onChange={e => setFiles(e.target.files)} />
                 <input type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
                 <textarea type="text" placeholder='Descrption' value={description} onChange={e => setDescription(e.target.value)} />
-                <input type="text" placeholder='Weight' value={weight} onChange={e => setWeight(e.target.value)} />
+                {/* <input type="text" placeholder='Weight' value={weight} onChange={e => setWeight(e.target.value)} /> */}
                 <button type="submit">Submit</button>
+                <button onClick={toggleVisable}>Cancel</button>
             </form>
         </div>
     )

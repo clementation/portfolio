@@ -44,9 +44,10 @@ export default function Frame({ projectData, selectedProject, setSelectedProject
             onClick={handleClick}
             style={{
                 gridColumn: isOpen ? "1 / -1" : "auto",
-                paddingTop: isOpen ? "0rem" : 0,
-                paddingBottom: isOpen ? "2rem" : 0
-
+                marginTop: isOpen ? "4rem" : 0,
+                paddingTop: isOpen ? "2rem" : 0,
+                paddingBottom: isOpen ? "2rem" : 0,
+                borderTop: isOpen ? "solid black 2px" : "none"
             }}
         >
             <div className="heroSection">

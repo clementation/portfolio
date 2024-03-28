@@ -1,9 +1,19 @@
 .sections{
     width: 100%;
-    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: solid black 2px;
 }
 
 .section{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.verticalSection{
     padding-top: 2rem;
     padding-bottom: 2rem;
     width: 100%;
@@ -16,7 +26,7 @@
 }
 
 .sectionInfo{
-    max-width: 30rem;
+    max-width: 35rem;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -31,6 +41,14 @@
     margin-block-start: 0;
 }
 
+.sectionGrid{
+    width: 100%;
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 
+        repeat(auto-fit, minmax(17rem, 1fr));
+}
+
 @media (min-width: 1024px){
     .section{
         flex-direction: row;
@@ -42,4 +60,5 @@
     .sectionImage{
         flex-shrink: 1;
     }
+    
 }

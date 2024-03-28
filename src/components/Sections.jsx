@@ -1,6 +1,8 @@
+
 import "../styles/Sections.css"
 
-function ImageSectionInfo({title, description}) {
+function SectionInfo({title, description}) {
+    // console.log(title)
     return(
         <div className="sectionInfo">
             {title !== "" && <h2>{title.toUpperCase()}</h2>}
@@ -17,15 +19,50 @@ function ImageSection({section}){
             <div className="sectionImage">
                 <img src={imageUrl} />
             </div>
-            <ImageSectionInfo title={title} description={description} />
+            {(title || description) && <SectionInfo title={title} description={description} />}
+        </div>
+    )
+}
+
+function GalleryItem({imageUrl}) {
+    return(
+        <div className="galleryItem">
+            <img src={imageUrl} />
+        </div>
+    )
+}
+
+function GallerySection({section}) {
+    const {title, description, imageUrl } = section
+    
+    return(
+        <div className="verticalSection">
+            {(title || description) && <SectionInfo title={title} description={description} />}
+            <div className="sectionGrid">
+                {imageUrl.map((imageUrl, index) => <GalleryItem key={index} imageUrl={imageUrl}/>)}
+            </div>
         </div>
     )
 }
 
 function Section({section}){
+
+    function selectSection(section){
+
+        switch(section.layout){
+            case "image":
+                return <ImageSection section={section} />
+            case "gallery":
+                return <GallerySection section={section} />
+        }
+    }
+
+    const selectedSection = selectSection(section)
     
     return(
-        <ImageSection section={section} />
+        <>
+            {selectedSection}
+        </>
     )
 }
 
